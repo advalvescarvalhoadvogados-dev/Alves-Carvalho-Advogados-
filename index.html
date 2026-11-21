@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alves Carvalho Advogados — Escritório Digital</title>
+<script src="https://jsdelivr.net"></script>
+<style>
+:root{--navy:#080808;--blue:#171717;--gold:#f2c500;--bg:#f2f2f2;--line:#dedede;--text:#191919;--muted:#666;--red:#b42318;--orange:#9a6900;--green:#16794b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:#efefef;color:#191919}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:1px solid #c7a500;border-radius:8px;padding:10px 14px;background:#111;color:#fff;font-weight:650}
+button:hover{filter:brightness(1.12)}
+button.secondary{background:#f4f0dc;color:#27220b;border:1px solid #d8b500}
+button.danger{background:#fff0ef;color:#b42318;border:1px solid #e7b4b0}
+button.small{padding:6px 9px;font-size:13px}
+.shell{max-width:1380px;margin:auto;padding:20px}
+.top{background:#050505;color:#fff;border:1px solid #d8b400;border-radius:15px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:20px}
+.logo{width:160px;height:110px;object-fit:contain;background:#050505;border-radius:8px}
+.top h1{margin:0;font-family:Georgia,serif;font-size:24px;color:#fff}
+.top p{margin:5px 0 0;color:#d7d7d7}
+.brand-sub{color:#f2c500!important;letter-spacing:2px!important;font-weight:800!important}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;padding:8px;background:#111;border:1px solid #d3ad00;border-radius:12px}
+.nav button{background:#fff;color:#171717;border:1px solid #c9c9c9;border-radius:8px}
+.nav button.active{background:#090909;color:#f5cc00;border:1px solid #f2c500}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat,.panel{background:#fff;border:1px solid #d8d8d8;border-radius:12px;padding:16px}
+.stat{border-top:3px solid #d8b500}
+.stat span{display:block;color:var(--muted);font-size:13px}
+.stat strong{font-size:28px;display:block;margin-top:7px}
+.panel{margin-top:14px}
+.panel h2{font-size:19px;margin:0 0 14px;border-bottom:1px solid #eadb91;padding-bottom:9px}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:#343434}
+input,select,textarea{width:100%;border:1px solid #c9c9c9;border-radius:8px;padding:10px;background:#fff}
+textarea{min-height:80px;resize:vertical}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+.toolbar input{max-width:420px}
+.list{display:grid;gap:10px}
+.item{border:1px solid #dedede;border-left:3px solid #d5ae00;border-radius:10px;padding:13px;display:flex;justify-content:space-between;gap:12px;background:#fff}
+.item h3{font-size:16px;margin:0 0 5px}
+.muted{color:var(--muted);font-size:13px;line-height:1.5}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.badge{font-size:12px;border-radius:999px;padding:4px 8px;background:#f5f1df;color:#514313}
+.badge.red{background:#ffebe9;color:#b42318}
+.badge.orange{background:#fff2d8;color:#8a5500}
+.badge.green{background:#e1f7eb;color:#16794b}
+.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed #d2c37e;border-radius:12px;background:#fafafa}
+.alert{border-left:4px solid var(--orange);background:#fff8df;padding:12px;border-radius:8px;margin:8px 0}
+.alert.red{border-color:var(--red);background:#fff0ef}
+.hidden{display:none!important}
+.inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.item-actions{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
+.sync-pill{font-size:12px;padding:5px 10px;border-radius:999px;background:#173d2b;color:#6ee7b7;border:1px solid #2e6f50;font-weight:600}
+.sync-pill.saving{background:#3d2f0e;color:#fcd34d}
+.sync-pill.error{background:#451313;color:#fca5a5}
+#loginGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#050505,#242424)}
+#loginGate .login-card{width:min(100%,430px);background:#fff;border:1px solid #d8b400;border-radius:16px;padding:28px;box-shadow:0 18px 55px #0006}
+#loginGate .login-title{margin:0 0 6px;font-family:Georgia,serif;color:#111;font-size:25px}
+#loginGate .login-sub{margin:0 0 20px;color:#666;font-size:14px}
+#loginGate .login-field{display:flex;flex-direction:column;gap:7px;margin:14px 0}
+#loginGate .login-submit{width:100%;margin-top:10px;background:#080808;color:#f2c500;padding:12px}
+#loginGate .login-error{min-height:20px;color:#b42318;font-size:13px;margin-top:12px;font-weight:600}
+#logoutAccess{background:#fff;color:#111}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}.item{flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="loginGate">
+  <form class="login-card" id="accessLoginForm">
+    <h2 class="login-title">Alves Carvalho Advogados</h2>
+    <p class="login-sub">Escritório Digital — Acesso Seguro em Nuvem</p>
+    <div class="login-field"><label for="accessEmail">E-mail autorizado</label><input id="accessEmail" type="email" required placeholder="seuemail@escritorio.com.br"></div>
+    <div class="login-field"><label for="accessPassword">Senha</label><input id="accessPassword" type="password" required placeholder="Digite sua senha"></div>
+    <button class="login-submit" id="loginSubmitBtn" type="submit">Entrar com segurança</button>
+    <div class="login-error" id="accessLoginError"></div>
+  </form>
+</div>
+
+<div class="shell" style="display:none">
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 210 140" xmlns="http://w3.org"><rect width="210" height="140" rx="8" fill="#050505"/><circle cx="105" cy="54" r="34" fill="none" stroke="#f2c500" stroke-width="2.5"/><text x="105" y="63" text-anchor="middle" fill="#f2c500" font-family="Georgia,serif" font-size="28" font-weight="bold">AC</text><text x="105" y="108" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="13">ALVES CARVALHO</text><text x="105" y="124" text-anchor="middle" fill="#f2c500" font-size="9" font-weight="bold" letter-spacing="3">ADVOGADOS</text></svg>
+    <div><h1>Alves Carvalho Advogados</h1><p class="brand-sub">ESCRITÓRIO DIGITAL</p><p>Gestão de clientes, processos, documentos e prazos</p></div>
+  </div>
+  <div class="inline">
+    <span id="syncStatus" class="sync-pill">☁️ Nuvem conectada</span>
+    <span id="todayLabel"></span>
+    <button class="secondary" id="exportBtn">Backup</button>
+    <button type="button" id="logoutAccess">Sair</button>
+  </div>
+</header>
+
+<nav class="nav" id="nav">
+  <button data-view="dashboard" class="active">Painel</button>
+  <button data-view="cases">Processos</button>
+  <button data-view="archive">Arquivo</button>
+  <button data-view="deadlines">Prazos</button>
+  <button data-view="history">Histórico</button>
+  <button data-view="meuinss">Meu INSS</button>
+  <button id="googleDriveMenu" style="background:#fff6cf;color:#5b4700">Google Drive</button>
+  <button data-view="caixapro">Caixa Pro</button>
+</nav>
+
+<main>
+  <section id="view-dashboard">
+    <div class="grid">
+      <div class="stat"><span>Clientes ativos</span><strong id="statClients">0</strong></div>
+      <div class="stat"><span>Processos ativos</span><strong id="statCases">0</strong></div>
+      <div class="stat"><span>Prazos vencidos</span><strong id="statOverdue">0</strong></div>
+      <div class="stat"><span>Vencem hoje</span><strong id="statToday">0</strong></div>
+    </div>
+    <div class="panel"><div class="toolbar"><h2>Alertas e próximos vencimentos</h2><button id="newDeadlineFromDash">+ Novo prazo</button></div><div id="dashboardAlerts"></div></div>
+    <div class="panel"><h2 id="clientFormTitle">Cadastrar cliente</h2>
+      <form id="clientForm"><input type="hidden" id="clientId">
+        <div class="formgrid">
+          <div class="field"><label>Nome completo *</label><input id="clientName" required></div>
+          <div class="field"><label>CPF / CNPJ</label><input id="clientDoc"></div>
+          <div class="field"><label>Telefone / WhatsApp</label><input id="clientPhone"></div>
+          <div class="field"><label>E-mail</label><input id="clientEmail" type="email"></div>
+          <div class="field full"><label>Observações</label><textarea id="clientNotes"></textarea></div>
+        </div>
+        <div class="actions"><button type="submit">Salvar cliente</button><button type="button" class="secondary" id="cancelClientEdit">Limpar</button></div>
+      </form>
+    </div>
+    <div class="panel"><div class="toolbar"><h2>Clientes</h2><input id="clientSearch" placeholder="Pesquisar cliente..."></div><div id="clientList" class="list"></div></div>
+    <div class="panel" id="clientFolderPanel">
+      <h2>📁 Pasta de documentos do cliente (Nuvem)</h2>
+      <form id="clientFileForm">
+        <div class="formgrid">
+          <div class="field"><label>Cliente *</label><select id="folderClient" required></select></div>
+          <div class="field"><label>Tipo</label><select id="folderType"><option>Documento pessoal</option><option>Procuração</option><option>Comprovante</option><option>Documentos médicos</option><option>CNIS / INSS</option><option>Petição</option><option>Decisão / sentença</option><option>Contrato</option><option>Outros</option></select></div>
+          <div class="field"><label>Requerente</label><input id="folderRequerente"></div>
+          <div class="field"><label>Requerido</label><input id="folderRequerido"></div>
+          <div class="field full"><label>Descrição</label><textarea id="folderDescription"></textarea></div>
